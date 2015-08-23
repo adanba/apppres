@@ -1,7 +1,7 @@
 ---
-title       : Time Series
-subtitle    : Explorer  
-author      : Abdel DANBA
+title       : Time Series Explorer
+subtitle    : Web & Call Data
+author      : Abdelhadi DANBA
 job         : Data Scientist
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
@@ -13,23 +13,88 @@ knit        : slidify::knit2slides
 ---
 
 
-## Read-And-Delete
+## Out line
 
-1. Edit YAML front matter
-2. Write using R Markdown
-3. Use an empty line followed by three dashes to separate slides!
+1. Application
+2. Simulate Data
+3. Filtering Data
+4. Plotting Options
+5. Application Interface
 
+--- .class #id 
+
+## What this application do
+  
+This application is a **"Time Series Explorer"**, with some pre-programming **Filter** on data.
+
+This **"Time Series Explorer"** correspondants to the frequency of a **Call Center** in parllel to the **Web Site** of a company.
+
+The aim of this application is to see the correlation between the Web and Call, and explore this correlation to optimize the **Call Center** influence.
 
 
 --- .class #id 
 
-## Slide 2
+## How get the Data Simulated: 
 
-test sl2
+The Data is simulated with this code:
+  
+
+```r
+# Simulating Data
+df.web <- data.frame(
+  time = seq(Sys.time(), len=100, by="1 min")[sample(100, 200,replace = TRUE)],
+  type_data = "Web",web = 1,call = 0,
+  question = rbinom(200,1,.75),
+  answered = rep(NA,200),abandonned = rep(NA,200))
+# Head Data
+df.web[1:5,]
+```
+
+```
+##                  time type_data web call question answered abandonned
+## 1 2015-08-23 12:52:21       Web   1    0        1       NA         NA
+## 2 2015-08-23 13:19:21       Web   1    0        1       NA         NA
+## 3 2015-08-23 12:34:21       Web   1    0        1       NA         NA
+## 4 2015-08-23 12:02:21       Web   1    0        1       NA         NA
+## 5 2015-08-23 12:41:21       Web   1    0        1       NA         NA
+```
 
 
+--- .class #id 
+
+## Pre-Programming Filtering:
+
+Pre-programming filters are a kind of filter on data Web or Call, that we can choose via `selectInput` :
+
+### 1. Filter Web:
+We have two filters:
+* The first one is plot All Data
+* The second filter plot the session only with question.
+
+### 2. Filter Call:
+We have three filters here:
+* The first one is plot All Data of Call Center
+* Plot only the frequency of call answered
+* Plot only the frequency of call abandonned
+
+--- .class #id 
+## Plotting Options:
+
+We used `radioButtonscan` to choose one of the three these plotting modes (default web):
+  
+* Only Web Data
+* Only Call Data
+* Both Web and Call Data
+
+We also can modify the step of calculating frequency (default pause = 5 min), here we used `sliderInput`.
 
 
+--- .class #id 
 
+## Application Interface 
+
+The principal menu of the application seems very simple, so we can navigate to the `Documenation` rubrique.
+
+![UI](/Users/danba95/Desktop/slidify/apppres/assets/img/interface_application.jpg)
 
 

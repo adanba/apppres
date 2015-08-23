@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Time Series</title>
+  <title>Time Series Explorer</title>
   <meta charset="utf-8">
-  <meta name="description" content="Time Series">
-  <meta name="author" content="Abdel DANBA">
+  <meta name="description" content="Time Series Explorer">
+  <meta name="author" content="Abdelhadi DANBA">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -32,9 +32,9 @@
     <!-- LOGO SLIDE -->
         <slide class="title-slide segue nobackground">
   <hgroup class="auto-fadein">
-    <h1>Time Series</h1>
-    <h2>Explorer</h2>
-    <p>Abdel DANBA<br/>Data Scientist</p>
+    <h1>Time Series Explorer</h1>
+    <h2>Web &amp; Call Data</h2>
+    <p>Abdelhadi DANBA<br/>Data Scientist</p>
   </hgroup>
   <article></article>  
 </slide>
@@ -43,13 +43,15 @@
     <!-- SLIDES -->
     <slide class="" id="slide-1" style="background:;">
   <hgroup>
-    <h2>Read-And-Delete</h2>
+    <h2>Out line</h2>
   </hgroup>
   <article data-timings="">
     <ol>
-<li>Edit YAML front matter</li>
-<li>Write using R Markdown</li>
-<li>Use an empty line followed by three dashes to separate slides!</li>
+<li>Application</li>
+<li>Simulate Data</li>
+<li>Filtering Data</li>
+<li>Plotting Options</li>
+<li>Application Interface</li>
 </ol>
 
   </article>
@@ -58,10 +60,105 @@
 
 <slide class="class" id="id" style="background:;">
   <hgroup>
-    <h2>Slide 2</h2>
+    <h2>What this application do</h2>
   </hgroup>
   <article data-timings="">
-    <p>test sl2</p>
+    <p>This application is a <strong>&quot;Time Series Explorer&quot;</strong>, with some pre-programming <strong>Filter</strong> on data.</p>
+
+<p>This <strong>&quot;Time Series Explorer&quot;</strong> correspondants to the frequency of a <strong>Call Center</strong> in parllel to the <strong>Web Site</strong> of a company.</p>
+
+<p>The aim of this application is to see the correlation between the Web and Call, and explore this correlation to optimize the <strong>Call Center</strong> influence.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>How get the Data Simulated:</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The Data is simulated with this code:</p>
+
+<pre><code class="r"># Simulating Data
+df.web &lt;- data.frame(
+  time = seq(Sys.time(), len=100, by=&quot;1 min&quot;)[sample(100, 200,replace = TRUE)],
+  type_data = &quot;Web&quot;,web = 1,call = 0,
+  question = rbinom(200,1,.75),
+  answered = rep(NA,200),abandonned = rep(NA,200))
+# Head Data
+df.web[1:5,]
+</code></pre>
+
+<pre><code>##                  time type_data web call question answered abandonned
+## 1 2015-08-23 12:52:21       Web   1    0        1       NA         NA
+## 2 2015-08-23 13:19:21       Web   1    0        1       NA         NA
+## 3 2015-08-23 12:34:21       Web   1    0        1       NA         NA
+## 4 2015-08-23 12:02:21       Web   1    0        1       NA         NA
+## 5 2015-08-23 12:41:21       Web   1    0        1       NA         NA
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Pre-Programming Filtering:</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Pre-programming filters are a kind of filter on data Web or Call, that we can choose via <code>selectInput</code> :</p>
+
+<h3>1. Filter Web:</h3>
+
+<p>We have two filters:</p>
+
+<ul>
+<li>The first one is plot All Data</li>
+<li>The second filter plot the session only with question.</li>
+</ul>
+
+<h3>2. Filter Call:</h3>
+
+<p>We have three filters here:</p>
+
+<ul>
+<li>The first one is plot All Data of Call Center</li>
+<li>Plot only the frequency of call answered</li>
+<li>Plot only the frequency of call abandonned</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Plotting Options:</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>We used <code>radioButtonscan</code> to choose one of the three these plotting modes (default web):</p>
+
+<ul>
+<li>Only Web Data</li>
+<li>Only Call Data</li>
+<li>Both Web and Call Data</li>
+</ul>
+
+<p>We also can modify the step of calculating frequency (default pause = 5 min), here we used <code>sliderInput</code>.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Application Interface</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The principal menu of the application seems very simple, so we can navigate to the <code>Documenation</code> rubrique.</p>
+
+<p><img src="/Users/danba95/Desktop/slidify/apppres/assets/img/interface_application.jpg" alt="UI"></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -73,14 +170,38 @@
     <ul>
       <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=1 title='Read-And-Delete'>
+        data-slide=1 title='Out line'>
          1
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Slide 2'>
+        data-slide=2 title='What this application do'>
          2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='How get the Data Simulated:'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Pre-Programming Filtering:'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Plotting Options:'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Application Interface'>
+         6
       </a>
     </li>
   </ul>
