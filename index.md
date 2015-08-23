@@ -95,6 +95,6 @@ We also can modify the step of calculating frequency (default pause = 5 min), he
 
 The principal menu of the application seems very simple, so we can navigate to the `Documenation` rubrique.
 
-![UI](/Users/danba95/Desktop/slidify/apppres/assets/img/interface_application.jpg)
+![UI](../apppres/assets/img/interface_application.jpg)
 
 
